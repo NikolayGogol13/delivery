@@ -1,6 +1,7 @@
 <template>
   <div>
-    .0
+    <router-link to="/admin">admin</router-link>
+    <router-link to="/owner">owner</router-link>
   </div>
 </template>
 
