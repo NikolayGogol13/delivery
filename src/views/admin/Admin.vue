@@ -14,7 +14,11 @@ export default {
   },
   methods: {
     updateFields(obj) {
-      console.log(obj);
+      // this.$store.dispatch('adminLogin', obj)
+      this.$store.dispatch('createAdmin', obj)
+      .then(r => {
+        console.log(r);
+      })
     }
   }
 }

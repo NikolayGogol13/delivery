@@ -8,6 +8,7 @@
                     :rules="emailRules"/>
       <v-text-field label="Password"
                     v-model="password"
+                    @keydown.enter="submit"
                     :rules="passwordRules"/>
       <v-btn
           :disabled="!valid"
