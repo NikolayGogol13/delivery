@@ -10,6 +10,11 @@ export const linksAdmin = [
         icon: 'mdi-home'
     },
     {
+        path: 'create-owner',
+        label: 'Create owner',
+        icon: 'mdi-home'
+    },
+    {
         path: '/',
         label: 'Log out',
         logOut: true,

@@ -29,6 +29,11 @@ const routes = [
         path: 'owners',
         name: 'admin-owners',
         component: () => import( /* webpackChunkName: "adminOwners" */ '../views/admin/Owners.vue')
+      },
+      {
+        path: 'create-owner',
+        name: 'create-owner',
+        component: () => import( /* webpackChunkName: "createOwner" */ '../views/admin/CreateOwner.vue')
       }
     ]
   },
