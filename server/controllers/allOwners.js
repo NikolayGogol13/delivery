@@ -1,4 +1,4 @@
-const fb = require("../models/firebase-config")
+const fb = require("../config/firebase-config")
 const admin = fb.auth()
 exports.allOwners = function (req, res) {
     const users = []

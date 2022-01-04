@@ -1,4 +1,4 @@
-const fb = require("../models/firebase-config")
+const fb = require("../config/firebase-config")
 const admin = fb.auth()
 
 exports.deleteOwner = function (req, res) {

@@ -5,14 +5,17 @@ const url = 'http://localhost:5001/my-project-1505985398534/us-central1/sendEmai
 export default {
     state: {
         user: null,
+        isAuthAdmin: false,
         api: axios
     },
     mutations: {
         adminLogin(state, data) {
             state.user = data
+            state.isAuthAdmin = true
         },
         logOut(state) {
             state.user = null
+            state.isAuthAdmin = false
         }
     },
     actions: {
