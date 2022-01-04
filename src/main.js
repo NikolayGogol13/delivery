@@ -8,6 +8,7 @@ import './assets/scss/app.scss'
 import VueFirestore from 'vue-firestore'
 import firebase from 'firebase'
 Vue.config.productionTip = false
+import axios from 'axios'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDJvrhmRwG18dR91ndWwNwqJZapTkfRyuE",
@@ -20,6 +21,13 @@ const firebaseConfig = {
 };
 
 Vue.use(VueFirestore)
+
+
+
+const baseURL = 'http://localhost:' + process.env.VUE_APP__PORT_LISTEN
+if (typeof baseURL !== 'undefined') {
+  axios.defaults.baseURL = baseURL
+}
 
 const firebaseApp = firebase.initializeApp(firebaseConfig)
 

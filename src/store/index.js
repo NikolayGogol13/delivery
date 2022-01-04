@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import home from '@/store/auth/admin-auth'
+import adminAuth from '@/store/auth/admin-auth'
+import admin from '@/store/admin/admin'
 import createPersistedState from "vuex-persistedstate"
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     modules: {
-        home
+        adminAuth,
+        admin
     },
     plugins: [
         createPersistedState({

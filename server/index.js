@@ -8,10 +8,10 @@ const dotenv = require('dotenv');
 dotenv.config();
 //
 const allOwners = require('./routes/allOwners')
-app.use('/owners-list', allOwners)
+app.use('/owners-list/:maxResults', allOwners)
 //
 const port = process.env.VUE_APP__PORT_LISTEN
 
 app.listen(port, () => {
-    console.log('Port is ' + port);
+    console.log('Port is: ' + port);
 })

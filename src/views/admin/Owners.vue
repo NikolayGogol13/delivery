@@ -1,26 +1,30 @@
 <template>
   <div class="owner-wrapper">
-
+    <pre>{{ owners }}</pre>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-
-
 export default {
   name: "Owners",
-  components: {
-  },
+  components: {},
   data() {
     return {
-
+      owners: []
     }
   },
   created() {
-   axios.get('/owners-list')
+    this.getOwners(2)
   },
   methods: {
+    getOwners(maxResults) {
+      this.$store.dispatch('getOwners', maxResults)
+          .then(res => {
+            res.data.forEach(el => {
+              this.owners.push(el)
+            })
+          })
+    }
   }
 }
 </script>
