@@ -42,19 +42,16 @@ export default {
   created() {
     this.getOwners(maxResult)
   },
-  computed:{
+  computed: {
     exceptAdmin() {
       return this.owners.filter(el => el.uid !== process.env.VUE_APP__ADMIN)
     }
   },
   methods: {
     getOwners(maxResults) {
-      this.owners = []
       this.$store.dispatch('getOwners', maxResults)
           .then(res => {
-            res.data.forEach(el => {
-              this.owners.push(el)
-            })
+            this.owners = res.data
           })
     },
     formatDate(date) {
@@ -65,7 +62,7 @@ export default {
           .then(() => {
             this.getOwners(maxResult)
           })
-    }
+    },
   }
 }
 </script>

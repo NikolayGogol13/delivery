@@ -23,6 +23,7 @@
       {{ text }}
     </v-snackbar>
     <LoginCreateForm btn-text="create"
+                     type="text"
                      ref="LoginCreateForm"
                      @update-fields="updateFields"/>
   </div>

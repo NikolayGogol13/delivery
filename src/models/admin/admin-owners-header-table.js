@@ -2,22 +2,22 @@ export const AdminOwnersHeaderTable = [
     {
         text: 'Email',
         align: 'start',
-        sortable: false,
+        sortable: true,
         value: 'email',
     },
     {
         text: 'Disabled',
-        sortable: false,
+        sortable: true,
         value: 'disabled',
     },
     {
         text: 'Email Verified',
-        sortable: false,
+        sortable: true,
         value: 'emailVerified',
     },
     {
         text: 'Uid',
-        sortable: false,
+        sortable: true,
         value: 'uid',
     },
     {

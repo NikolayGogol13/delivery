@@ -7,6 +7,7 @@
                     v-model="email"
                     :rules="emailRules"/>
       <v-text-field label="Password"
+                    :type="type"
                     v-model="password"
                     @keydown.enter="submit"
                     :rules="passwordRules"/>
@@ -28,6 +29,10 @@ export default {
     btnText: {
      type: String,
      default: 'Log in'
+    },
+    type: {
+      type: String,
+      default: 'password'
     }
   },
   data() {

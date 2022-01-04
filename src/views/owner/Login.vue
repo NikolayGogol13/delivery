@@ -1,26 +1,26 @@
 <template>
-  <main class="admin-login">
-    <v-snackbar
-        v-if="error"
-        :timeout="timeout"
-        :value="true"
-        absolute
-        centered
-        right
-        tile
-        color="red accent-2">
-      {{ error }}
-    </v-snackbar>
-    <LoginCreateForm ref="LoginCreateForm" @update-fields="updateFields"/>
-  </main>
+<main class="owner-login">
+  <v-snackbar
+      v-if="error"
+      :timeout="timeout"
+      :value="true"
+      absolute
+      centered
+      right
+      tile
+      color="red accent-2">
+    {{ error }}
+  </v-snackbar>
+  <LoginCreateForm ref="LoginCreateForm" @update-fields="updateFields"/>
+</main>
 </template>
 
 <script>
-import LoginCreateForm from "@/components/LoginCreateForm"
+import LoginCreateForm from "@/components/LoginCreateForm";
 import GetEnvConst from "@/helper/get-env-const";
 
 export default {
-  name: "AdminLogin",
+  name: "OwnerLogin",
   components: {
     LoginCreateForm
   },
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     updateFields(obj) {
-      this.$store.dispatch('adminLogin', obj)
+      this.$store.dispatch('ownerLogin', obj)
           .then(r => {
             if (r?.code) {
               this.error = r.message
@@ -40,7 +40,7 @@ export default {
             } else {
               this.$refs.LoginCreateForm.email = ''
               this.$refs.LoginCreateForm.password = ''
-              this.$router.push('/admin/dashboard')
+              this.$router.push('/owner/dashboard')
             }
           })
     }
