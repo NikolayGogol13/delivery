@@ -15,7 +15,7 @@
           color="success"
           class="mr-4"
           @click="submit">
-        Log in
+        {{ btnText }}
       </v-btn>
     </v-form>
   </main>
@@ -24,6 +24,12 @@
 <script>
 export default {
   name: "LoginCreateForm",
+  props:{
+    btnText: {
+     type: String,
+     default: 'Log in'
+    }
+  },
   data() {
     return {
       valid: true,
