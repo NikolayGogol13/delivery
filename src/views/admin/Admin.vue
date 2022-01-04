@@ -13,7 +13,7 @@
 
 <script>
 import Sidebar from "@/components/Sidebar";
-import {linksAdmin} from "@/models/admin-sidebar";
+import {linksAdmin} from "@/models/admin/admin-sidebar";
 export default {
   name: "Admin",
   components: {

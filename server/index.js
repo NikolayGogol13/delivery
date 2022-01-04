@@ -8,7 +8,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 //
 const allOwners = require('./routes/allOwners')
-app.use('/owners-list/:maxResults', allOwners)
+const deleteOwner = require('./routes/deleteOwner')
+app.use('/owners-list', allOwners)
+app.use('/delete-owner', deleteOwner)
 //
 const port = process.env.VUE_APP__PORT_LISTEN
 
