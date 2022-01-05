@@ -9,10 +9,8 @@ export default {
             const formData = new FormData()
             formData.append('image', payload.image);
             formData.append('uid', payload.uid);
-            state.api.post('/save-image', formData, {
+            return state.api.post('/save-image', formData, {
                 'Content-Type': 'multipart/form-data'
-            }).then(r => {
-                console.log(r);
             })
         }
     }

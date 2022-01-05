@@ -8,6 +8,7 @@
                     :rules="textRules"/>
       <v-text-field label="Company slug"
                     v-model="slug"/>
+      <img :src="`../../../${imagePreview}`" alt="">
       <v-file-input
           v-model="image"
           :rules="imageRules"
@@ -38,6 +39,7 @@ export default {
       name: '',
       slug: '',
       image: null,
+      imagePreview: '',
       textRules: [
         v => !!v || 'Field is required'
       ],
@@ -58,8 +60,11 @@ export default {
           uid: this.$store.state.ownerAuth.user.uid
         }
         this.$store.dispatch('createBusiness', obj)
+            .then(res => {
+              this.imagePreview = res.data
+            })
       }
-    }
+    },
   }
 }
 </script>
