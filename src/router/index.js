@@ -85,6 +85,15 @@ const routes = [
                 },
                 component: () => import( /* webpackChunkName: "createBusiness" */ '../views/owner/CreateBusiness.vue')
             },
+            {
+                path: 'business',
+                name: 'business',
+                meta: {
+                    owner: true,
+                    admin: false
+                },
+                component: () => import( /* webpackChunkName: "business" */ '../views/owner/Business.vue')
+            },
         ]
     }
 ]

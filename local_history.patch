@@ -1,0 +1,22 @@
+Index: src/store/owner/owner.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/store/owner/owner.js b/src/store/owner/owner.js
+--- a/src/store/owner/owner.js	
++++ b/src/store/owner/owner.js	(date 1641342517565)
+@@ -6,10 +6,9 @@
+     },
+     actions: {
+         createBusiness({commit, state}, payload) {
+-            const formData = new FormData()
+-            formData.append('image', payload.file);
+-            a.post('/save-image', formData, {
+-                'Content-Type': 'multipart/form-data'
++            payload.log
++            state.api.post('/save-image', {
++                image: payload.image
+             }).then(r => {
+                 console.log(r);
+             })
