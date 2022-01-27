@@ -32,6 +32,24 @@ export default {
                 .collection('business')
                 .doc(payload.business)
                 .set(updateObj)
+        },
+        deleteBusiness({state, commit}, payload) {
+            return db.collection(DB_NAME)
+                .doc(payload.user)
+                .collection('business')
+                .doc(payload.business)
+                .delete()
+                .then(_ => {
+                    return state.api.delete('/delete-business', {
+                        params: payload
+                    })
+                })
+
+        },
+        removeBusinessImage({commit, state}, payload) {
+            return state.api.delete('/remove-image', {
+                params: payload
+            })
         }
     }
 }

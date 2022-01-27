@@ -30,3 +30,14 @@ const storage =
         }
     })
 exports.upload = multer({storage: storage})
+
+exports.deleteBusiness = function (req, res) {
+    const path = `./public/save-images/${req.query.user}/${req.query.business}`
+    fs.rm(path, {recursive: true}, err => {
+        if (err) {
+            throw err
+        }
+    })
+    res.end(JSON.stringify(req.query))
+
+}

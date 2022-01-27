@@ -1,26 +1,23 @@
 <template>
-  <div>
-    <v-sheet
-        class="mx-auto"
-        max-width="500">
-      <v-slide-group
-          multiple
-          show-arrows>
-        <v-slide-item
-            v-for="(image, i) in images"
-            :key="i"
-            v-slot="{ active, toggle }">
-          <img @click="setActiveImage(image)" :src="image" alt="">
-        </v-slide-item>
-      </v-slide-group>
-    </v-sheet>
+  <div class="business-crud">
+    <v-snackbar
+        v-if="success"
+        :timeout="timeout"
+        :value="true"
+        absolute
+        centered
+        right
+        tile
+        color="success accent-2">
+      {{ text }}
+    </v-snackbar>
+    <img width="300" v-if="currentImage" :src="currentImage" alt="">
     <v-form ref="form"
             v-model="valid"
             lazy-validation>
       <v-text-field label="Company name"
                     v-model="name"
                     :rules="textRules"/>
-      <img width="150" v-if="currentImage" :src="currentImage" alt="">
       <v-file-input
           v-model="image"
           prepend-icon="mdi-camera"
@@ -39,16 +36,39 @@
         Create
       </v-btn>
     </v-form>
+    <div class="images">
+      <div v-for="(img, i) in images"
+           class="image-wrapper"
+           :key="i">
+        <img :src="img"
+             :class="{active: activeImageIndex === i}"
+             @click="setActiveImage(img, i)"
+             :alt="img">
+        <div class="remove" @click="removeImage(img)">x</div>
+      </div>
+
+    </div>
+    <v-btn
+        color="error"
+        class="mr-4"
+        @click="deleteBusiness">
+      Delete business
+    </v-btn>
   </div>
 </template>
 
 <script>
 import {db} from "@/main";
+import GetEnvConst from "@/helper/get-env-const";
 
 export default {
   name: "BusinessCRUD",
   data() {
     return {
+      success: false,
+      text: '',
+      timeout: null,
+      activeImageIndex: -1,
       currentImage: '',
       images: [],
       valid: true,
@@ -75,15 +95,17 @@ export default {
     }, 3000)
   },
   methods: {
-    setActiveImage(image) {
+    setActiveImage(image, index) {
       this.currentImage = image
       this.image = null
+      this.activeImageIndex = index
     },
     getImage() {
       const obj = {
         user: this.$store.state.ownerAuth.user.uid,
         business: this.$route.params.id
       }
+      this.images = []
       this.$store.dispatch('getImage', obj)
           .then(res => {
             res.data.forEach(el => {
@@ -112,9 +134,38 @@ export default {
           image: this.currentImage,
           name: this.name
         }
-        this.$store.dispatch('updateBusiness', obj)
+        this.$store.dispatch('updateBusiness', obj).then(_ => {
+          this.text = "Update Success"
+          this.timeout = +GetEnvConst.timeOut()
+          this.success = true
+        })
       }
     },
+    deleteBusiness() {
+      const obj = {
+        user: this.$store.state.ownerAuth.user.uid,
+        business: this.$route.params.id,
+        key: this.business['.key']
+      }
+      this.$store.dispatch('deleteBusiness', obj)
+          .then(_ => {
+            this.$router.push('/owner/business')
+          })
+    },
+    removeImage(img) {
+      const obj = {
+        user: this.$store.state.ownerAuth.user.uid,
+        business: this.$route.params.id,
+        key: img
+      }
+      this.$store.dispatch('removeBusinessImage', obj)
+          .then(_ => {
+            this.getImage()
+            this.text = "Deleted Success"
+            this.timeout = +GetEnvConst.timeOut()
+            this.success = true
+          })
+    }
   },
 }
 </script>
