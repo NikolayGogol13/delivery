@@ -94,6 +94,15 @@ const routes = [
                 },
                 component: () => import( /* webpackChunkName: "business" */ '../views/owner/Business.vue')
             },
+            {
+                path: 'crud-business/:id',
+                name: 'crud-business',
+                meta: {
+                    owner: true,
+                    admin: false
+                },
+                component: () => import( /* webpackChunkName: "crud-business" */ '../views/owner/BusinessCRUD.vue')
+            },
         ]
     }
 ]

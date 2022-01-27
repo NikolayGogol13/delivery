@@ -7,8 +7,9 @@
                     v-model="name"
                     :rules="textRules"/>
       <v-text-field label="Company slug"
+                    :rules="slugRules"
+                    @input="validateSlug"
                     v-model="slug"/>
-      <img :src="`../../../${imagePreview}`" alt="">
       <v-file-input
           v-model="image"
           :rules="imageRules"
@@ -39,8 +40,10 @@ export default {
       name: '',
       slug: '',
       image: null,
-      imagePreview: '',
       textRules: [
+        v => !!v || 'Field is required'
+      ],
+      slugRules: [
         v => !!v || 'Field is required'
       ],
       imageRules: [
@@ -52,19 +55,22 @@ export default {
   methods: {
     submit() {
       const isValid = this.$refs.form.validate()
-      if (!isValid) {
+      if (isValid) {
         const obj = {
           name: this.name,
           slug: this.slug,
           image: this.image,
-          uid: this.$store.state.ownerAuth.user.uid
+          uid: this.$store.state.ownerAuth.user.uid,
         }
         this.$store.dispatch('createBusiness', obj)
-            .then(res => {
-              this.imagePreview = res.data
+            .then(_ => {
+              this.$router.push('business')
             })
       }
     },
+    validateSlug() {
+      this.slug = this.slug.replaceAll('-', '_').replace(' ', '').trim()
+    }
   }
 }
 </script>

@@ -29,7 +29,7 @@ export default {
               this.$router.push('/')
             })
       } else {
-        this.$router.push(item.path)
+        this.$router.push('/owner/' + item.path)
       }
     }
   }

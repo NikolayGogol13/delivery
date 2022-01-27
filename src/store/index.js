@@ -4,6 +4,7 @@ import adminAuth from '@/store/auth/admin-auth'
 import ownerAuth from '@/store/auth/owner-auth'
 import admin from '@/store/admin/admin'
 import owner from '@/store/owner/owner'
+import business from '@/store/owner/business'
 import createPersistedState from "vuex-persistedstate"
 
 Vue.use(Vuex)
@@ -14,6 +15,7 @@ export default new Vuex.Store({
         ownerAuth,
         admin,
         owner,
+        business,
     },
     plugins: [
         createPersistedState({
