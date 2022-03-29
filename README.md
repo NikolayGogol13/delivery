@@ -22,3 +22,7 @@ npm run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### Libs
+[Google maps](https://www.npmjs.com/package/vue2-google-maps)

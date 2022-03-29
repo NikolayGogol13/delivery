@@ -1,0 +1,47 @@
+.control-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .col-50 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 10s linear;
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-size: 50px;
+      text-transform: capitalize;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      transition: color .5s linear;
+
+      &:hover {
+        color: red;
+      }
+    }
+
+    &:hover {
+      &:after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(white, .2);
+      }
+    }
+  }
+}

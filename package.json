@@ -22,11 +22,15 @@
     "nodemon": "^2.0.13",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
+    "vue-date-time-picker-js": "^1.0.2",
     "vue-firestore": "^0.3.30",
     "vue-moment": "^4.1.0",
     "vue-router": "^3.2.0",
+    "vue-time-picker": "^0.2.6",
     "vuetify": "^2.4.0",
+    "vuetify-time-range-picker": "^1.0.4",
     "vuex": "^3.4.0",
+    "vue2-google-maps": "^0.10.7",
     "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {

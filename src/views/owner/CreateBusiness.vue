@@ -10,6 +10,10 @@
                     :rules="slugRules"
                     @input="validateSlug"
                     v-model="slug"/>
+      <v-textarea
+          name="input-7-1"
+          label="Description"
+          v-model="description"/>
       <v-file-input
           v-model="image"
           :rules="imageRules"
@@ -38,6 +42,7 @@ export default {
     return {
       valid: true,
       name: '',
+      description: '',
       slug: '',
       image: null,
       textRules: [
@@ -60,6 +65,7 @@ export default {
           name: this.name,
           slug: this.slug,
           image: this.image,
+          description: this.description,
           uid: this.$store.state.ownerAuth.user.uid,
         }
         this.$store.dispatch('createBusiness', obj)

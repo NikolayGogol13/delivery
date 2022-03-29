@@ -2,7 +2,9 @@ import axios from 'axios'
 import {db} from "@/main";
 
 const DB_NAME = process.env.VUE_APP__FIREBASE_DATABASE__NAME
-
+const baseUrl = process.env.VUE_APP_BASE_URL + ''
+const apiKey = process.env.VUE_APP_GOOGLE_API_KEY + ''
+const CORS = process.env.VUE_APP_CORS + '/'
 export default {
     state: {
         api: axios
@@ -23,15 +25,11 @@ export default {
             })
         },
         updateBusiness({state, commit}, payload) {
-            const updateObj = {
-                name: payload.name,
-                image: payload.image
-            }
             return db.collection(DB_NAME)
                 .doc(payload.user)
                 .collection('business')
                 .doc(payload.business)
-                .set(updateObj)
+                .set(payload)
         },
         deleteBusiness({state, commit}, payload) {
             return db.collection(DB_NAME)
@@ -50,6 +48,16 @@ export default {
             return state.api.delete('/remove-image', {
                 params: payload
             })
+        },
+        initMap({commit, state}, url) {
+            const params = {
+                key: apiKey,
+                language: 'ua'
+            }
+            return state.api.get(`${CORS}${baseUrl}${url}`, {params})
+                .then(res => {
+                    console.log(res);
+                })
         }
     }
 }

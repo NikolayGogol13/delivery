@@ -1,5 +1,5 @@
 <template>
-  <main class="admin-login">
+  <main class="admin-login" :style="`background-image: url('${require('../../assets/images/Barchart-Animation-Background.svg')}')`">
     <v-snackbar
         v-if="error"
         :timeout="timeout"

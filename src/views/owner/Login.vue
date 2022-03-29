@@ -1,5 +1,6 @@
 <template>
-<main class="owner-login">
+<main class="owner-login"  :style="`background-image: url('${require('../../assets/images/Shadow-Fall-Background.svg')}')`">
+  <img alt="">
   <v-snackbar
       v-if="error"
       :timeout="timeout"

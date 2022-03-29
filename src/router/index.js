@@ -9,6 +9,10 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home
+    }, {
+        path: '/control',
+        name: 'control',
+        component: () => import(/* webpackChunkName: "control" */ '../views/Control.vue')
     },
     {
         path: '/admin-login',

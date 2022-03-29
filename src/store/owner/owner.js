@@ -10,7 +10,8 @@ export default {
         createBusiness({commit, state}, payload) {
             const obj = {
                 name: payload.name,
-                slug: payload.slug
+                slug: payload.slug,
+                description: payload.description
             }
             // check if doc exist
             const docRef = db.collection(DB_NAME)
